@@ -1,0 +1,21 @@
+config:
+  target: "https://torrentgroupevent.com/"
+  phases:
+    - duration: 60
+      arrivalRate: 100
+      name: Warm up
+    - duration: 120
+      arrivalRate: 100
+      rampTo: 50
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 500
+      name: Sustained load
+
+scenarios:
+  - name: "Load homepage"
+    flow:
+      - get:
+          url: "/"
+        expect:
+          - statusCode: 200
